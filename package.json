@@ -10,8 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.10.1",
     "@astrojs/check": "^0.7.0",
+    "astro": "^4.10.1",
+    "astro-icon": "^1.1.0",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@iconify-json/charm": "^1.1.12",
+    "@iconify-json/grommet-icons": "^1.1.11"
   }
 }
