@@ -1,35 +1,69 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
-<nav>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/contact">Contact</a></li>
-  </ul>
+<Icon name="charm:menu-hamburger" class="hamburger" />
+<nav class="nav-links">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
 </nav>
+<script>
+  document.querySelector(".hamburger")?.addEventListener("click", () => {
+    document.querySelector("nav")?.classList.toggle("open");
+  });
+</script>
+
 <style>
-  nav {
-    background-color: #f2f2f2;
-    padding: 10px;
-  }
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin-right: 10px;
-  }
-
   a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+  }
+  .nav-links {
+    width: 100%;
+    top: 5rem;
+    left: 48px;
+    background-color: #ff9776;
+    display: none;
+    margin: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background-color: #ff9776;
+  }
+
+  .expanded {
+    display: unset;
+  }
+
+  @media screen and (min-width: 636px) {
+    .nav-links {
+      margin-left: 5em;
+      display: block;
+      position: static;
+      width: auto;
+      background: none;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 15px 20px;
+    }
+    .hamburger {
+      display: none;
+    }
   }
 </style>

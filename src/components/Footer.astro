@@ -1,5 +1,18 @@
 ---
+import { Icon } from "astro-icon/components";
 
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: string;
+}
+const socials: SocialLink[] = [
+  {
+    name: "GitHub",
+    url: "https://github.com/egriff38",
+    icon: "grommet-icons:github",
+  },
+];
 ---
 
 <footer>
@@ -7,9 +20,27 @@
     This site will update as I complete more of the tutorial, so keep checking
     back and see how my journey is going!
   </p>
+  {
+    socials.map(({ name, url, icon }) => (
+      <a title={name} href={url}>
+        <Icon name={icon} />
+      </a>
+    ))
+  }
 </footer>
 <style>
+  a {
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #4c1d95;
+    text-decoration: none;
+  }
   footer {
     color: white;
+    footer {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
   }
 </style>

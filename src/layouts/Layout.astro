@@ -1,6 +1,6 @@
 ---
-import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Navigation />
+    <Header />
     <slot />
     <Footer />
   </body>
@@ -61,7 +61,6 @@ const { title } = Astro.props;
     color: white;
     font-size: 20px;
     line-heighsform: translatex(-50%);
-    width: 220px;
     height: auto;
     z-index: -1;
   }
