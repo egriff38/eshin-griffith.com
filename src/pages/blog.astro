@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-title: "Blog";
+const postColor = "#C2C314";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,6 +12,10 @@ title: "Blog";
       I post things about programming, books, games, and other things that I
       enjoy.
     </p>
-    <p>I recentle added a <a href="/posts/post-1">new post</a></p>
   </main></Layout
 >
+<style define:vars={{ postColor }}>
+  .post {
+    color: var(--postColor);
+  }
+</style>
