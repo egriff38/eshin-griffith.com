@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@cloudinary/url-gen": "^1.19.0",
     "astro": "^4.10.1",
     "astro-icon": "^1.1.0",
     "typescript": "^5.4.5"

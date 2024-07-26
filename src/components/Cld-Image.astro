@@ -1,0 +1,41 @@
+---
+// Sourced from https://github.com/cloudinary-community/cloudinary-examples/blob/main/examples/astro-image/src/components/CldImage.astro
+import { Image } from "astro:assets";
+import { Cloudinary } from "@cloudinary/url-gen";
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: import.meta.env.CLOUDINARY_CLOUD_NAME,
+  },
+  url: {
+    secure: true,
+  },
+});
+
+interface Props {
+  public_id: string;
+  alt?: string;
+  height: number;
+  width: number;
+}
+
+const { public_id, alt = public_id, height, width } = Astro.props;
+
+const myImage = cld.image(public_id);
+
+// auto format and quality
+myImage.format("auto").quality("auto");
+
+const imgSrc = myImage.toURL();
+---
+
+<div>
+  <Image alt={alt} src={imgSrc} width={width} height={height} />
+</div>
+
+<style>
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+</style>
