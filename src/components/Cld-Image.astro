@@ -6,6 +6,8 @@ import { Cloudinary } from "@cloudinary/url-gen";
 const cld = new Cloudinary({
   cloud: {
     cloudName: import.meta.env.CLOUDINARY_CLOUD_NAME,
+    apiKey: import.meta.env.CLOUDINARY_API_KEY,
+    apiSecret: import.meta.env.CLOUDINARY_API_SECRET,
   },
   url: {
     secure: true,
@@ -13,24 +15,27 @@ const cld = new Cloudinary({
 });
 
 interface Props {
-  public_id: string;
-  alt?: string;
+  /** public id or URL */
+  src: string;
+  alt: string;
   height: number;
   width: number;
 }
 
-const { public_id, alt = public_id, height, width } = Astro.props;
+const { alt, height, width } = Astro.props;
+let { src } = Astro.props;
+if (!src.startsWith("https://res.cloudinary.com")) {
+  const myImage = cld.image(src);
 
-const myImage = cld.image(public_id);
+  // auto format and quality
+  myImage.format("auto").quality("auto");
 
-// auto format and quality
-myImage.format("auto").quality("auto");
-
-const imgSrc = myImage.toURL();
+  src = myImage.toURL();
+}
 ---
 
 <div>
-  <Image alt={alt} src={imgSrc} width={width} height={height} />
+  <Image {...{ src, alt, width, height }} />
 </div>
 
 <style>
