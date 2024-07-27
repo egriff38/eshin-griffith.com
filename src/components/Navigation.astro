@@ -18,14 +18,14 @@ import { Icon } from "astro-icon/components";
 <style>
   a {
     text-decoration: none;
-    color: #333;
+    color: var(--link-color);
     font-weight: bold;
   }
   .nav-links {
     width: 100%;
     top: 5rem;
     left: 48px;
-    background-color: #ff9776;
+    background-color: var(--nav-bg)
     display: none;
     margin: 0;
   }
@@ -42,7 +42,7 @@ import { Icon } from "astro-icon/components";
 
   .nav-links a:hover,
   .nav-links a:focus {
-    background-color: #ff9776;
+    background-color: var(--nav-bg);
   }
 
   .expanded {
