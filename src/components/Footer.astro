@@ -1,43 +1,58 @@
----
-import { Icon } from "astro-icon/components";
-
-interface SocialLink {
-  name: string;
-  url: string;
-  icon: string;
-}
-const socials: SocialLink[] = [
-  {
-    name: "GitHub",
-    url: "https://github.com/egriff38",
-    icon: "grommet-icons:github",
-  },
-];
----
-
-<footer>
-  <p>
-    This site will update as I complete more of the tutorial, so keep checking
-    back and see how my journey is going!
-  </p>
-  {
-    socials.map(({ name, url, icon }) => (
-      <a title={name} href={url}>
-        <Icon name={icon} />
-      </a>
-    ))
-  }
+<footer class="terminal-footer">
+  <ul class="status-line" aria-label="Site information">
+    <li><span class="status-key">location</span> Atlanta, GA</li>
+    <li><span class="status-key">stack</span> TypeScript · Effect · AWS</li>
+    <li><a href="https://github.com/egriff38">GitHub</a></li>
+    <li><a href="mailto:eshin@me.com">eshin@me.com</a></li>
+  </ul>
 </footer>
+
 <style>
-  a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #4c1d95;
-    text-decoration: none;
+  .terminal-footer {
+    flex: none;
+    padding: 0.75rem 1rem;
+    background: var(--overlay);
+    border-top: 1px solid var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
   }
-  footer {
-    flex-basis: auto;
-    color: white;
+
+  .status-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin: 0;
+    padding: 0;
+    color: var(--subtle);
+    list-style: none;
+  }
+
+  li {
+    max-width: 100%;
+  }
+
+  li:not(:last-child)::after {
+    content: "│";
+    margin-left: 1rem;
+    color: var(--muted);
+  }
+
+  .status-key {
+    color: var(--pine);
+  }
+
+  a {
+    color: var(--foam);
+  }
+
+  @media (max-width: 42rem) {
+    .status-line {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    li:not(:last-child)::after {
+      content: none;
+    }
   }
 </style>

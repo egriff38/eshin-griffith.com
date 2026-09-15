@@ -1,0 +1,204 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Work | Eshin Griffith"
+  description="Selected work by Eshin Griffith across AI voice systems, TypeScript and AWS platforms, enterprise ETL, and open-source Effect tooling."
+>
+  <header class="page-header">
+    <p class="prompt"><span aria-hidden="true">$</span> cat work.log</p>
+    <h1>Selected work</h1>
+    <p class="lede">
+      I lead backend and platform work where product decisions, system design,
+      and production operations meet. These are a few representative systems
+      and open-source projects.
+    </p>
+  </header>
+
+  <div class="work-stack">
+    <article class="panel case-study" aria-labelledby="alina-heading">
+      <header class="case-header">
+        <div>
+          <p class="panel-label">ChiroHD · AI voice scheduling</p>
+          <h2 id="alina-heading">Alina</h2>
+        </div>
+        <ul class="tag-list" aria-label="Alina technologies">
+          <li>TypeScript</li>
+          <li>AWS</li>
+          <li>ElevenLabs</li>
+          <li>OpenAPI</li>
+        </ul>
+      </header>
+
+      <div class="case-copy">
+        <p>
+          As Alina’s primary technical decision-maker, I lead four engineers
+          and coordinate across product, go-to-market, support, and executive
+          teams. We advanced a hackathon prototype into a SKED-integrated voice
+          scheduling product serving chiropractic offices in production.
+        </p>
+        <p>
+          I built a reusable TypeScript and AWS platform around generated
+          OpenAPI clients and namespaced ElevenLabs reconciliation. Robust,
+          versioned agent and configuration deployments now take about 30
+          seconds, making it possible to redeploy the fleet in minutes.
+        </p>
+        <p>
+          Production quality is measured as well as observed: the voice-agent
+          suite grew from 32 to 84 passing scenarios across six workflows,
+          catching prompt and tool regressions that previously required nuanced
+          manual testing.
+        </p>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <strong class="metric-value">~45</strong>
+          <span class="metric-label">enabled offices</span>
+        </div>
+        <div class="metric">
+          <strong class="metric-value">~60</strong>
+          <span class="metric-label">agents</span>
+        </div>
+        <div class="metric">
+          <strong class="metric-value">1,000–1,500</strong>
+          <span class="metric-label">monthly calls</span>
+        </div>
+        <div class="metric">
+          <strong class="metric-value">549</strong>
+          <span class="metric-label">production Step Function runs · 99% success</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel case-study" aria-labelledby="kollacode-heading">
+      <header class="case-header">
+        <div>
+          <p class="panel-label">Kollacode · enterprise data systems</p>
+          <h2 id="kollacode-heading">
+            <a href="https://kollacode.com">Kollacode</a>
+          </h2>
+        </div>
+        <ul class="tag-list" aria-label="Kollacode technologies">
+          <li>TypeScript</li>
+          <li>Node.js</li>
+          <li>ETL</li>
+          <li>OpenAPI</li>
+        </ul>
+      </header>
+
+      <div class="case-copy">
+        <p>
+          At Kollacode, I led development of EDIT, an enterprise ETL platform
+          processing more than 6,000 data loads annually for IBM Marketing. The
+          platform reduced processing time from eight hours to 30 minutes.
+        </p>
+        <p>
+          Other work ranged from moving client-side data processing into Web
+          Workers—cutting latency from minutes to milliseconds—to building an
+          automated REST documentation generator that converts TypeScript types
+          into JSON Schema for OpenAPI.
+        </p>
+      </div>
+    </article>
+
+    <section aria-labelledby="open-source-heading">
+      <p class="prompt"><span aria-hidden="true">$</span> ls ./open-source</p>
+      <h2 id="open-source-heading">Open-source systems</h2>
+      <div class="panel-grid open-source-grid">
+        <article class="panel">
+          <p class="panel-label">TypeScript · Effect</p>
+          <h3>
+            <a href="https://github.com/egriff38/effect-herdr">effect-herdr</a>
+          </h3>
+          <p>
+            A typed Effect SDK for a terminal-native agent multiplexer. I fixed
+            seven reproduced protocol and schema defects, expanded the typed RPC
+            surface from 14 to 62 operations, and removed a redundant RPC round
+            trip with regression coverage.
+          </p>
+          <ul class="tag-list" aria-label="effect-herdr outcomes">
+            <li>14 → 62 operations</li>
+            <li>7 defects fixed</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <p class="panel-label">TypeScript · Effect · GraphQL</p>
+          <h3>
+            <a href="https://github.com/egriff38/effect-graphql"
+              >effect-graphql</a
+            >
+          </h3>
+          <p>
+            A prototype code-first GraphQL layer over Effect Schema and RPC. I
+            also published authorization and testing guides through its
+            integrated documentation site.
+          </p>
+          <ul class="tag-list" aria-label="effect-graphql focus">
+            <li>prototype</li>
+            <li>authorization</li>
+            <li>testing</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .work-stack {
+    display: grid;
+    gap: clamp(2rem, 6vw, 4rem);
+    margin-top: clamp(2rem, 6vw, 4rem);
+  }
+
+  .case-study {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .case-header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .case-header h2,
+  .panel h3 {
+    margin: 0.2rem 0 0;
+  }
+
+  .case-copy {
+    max-width: 72ch;
+  }
+
+  .case-copy p:first-child {
+    margin-top: 0;
+  }
+
+  .case-copy p:last-child,
+  .panel p:last-child {
+    margin-bottom: 0;
+  }
+
+  .open-source-grid {
+    margin-top: 1rem;
+  }
+
+  section > h2 {
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 42rem) {
+    .case-header {
+      display: block;
+    }
+
+    .case-header .tag-list {
+      margin-top: 1rem;
+    }
+  }
+</style>

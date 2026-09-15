@@ -1,13 +1,194 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import headshotPic from "../assets/color-headshot.jpg";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <Image width={450} src={headshotPic} alt="profile picture" />
-  <p>
-    Hello! My name is Eshin Griffith, and this website is where I post the
-    things I'm up to and thinking about.
-  </p>
+<Layout
+  title="Eshin Griffith | Senior Software Engineer"
+  description="Senior software engineer and technical lead building TypeScript backend platforms, AI systems, and AWS infrastructure."
+>
+  <header class="page-header home-hero">
+    <div class="hero-copy">
+      <p class="prompt"><span aria-hidden="true">$</span> whoami</p>
+      <h1>Eshin Griffith</h1>
+      <p class="role">Senior Software Engineer</p>
+      <p class="lede">
+        I build typed backend platforms, AI agent systems, and cloud
+        infrastructure with TypeScript and AWS—then help teams carry them from
+        discovery through production.
+      </p>
+      <div class="actions">
+        <a class="button-link" href="/work">View my work</a>
+        <a
+          class="button-link secondary"
+          href="/Eshin_Griffith_Resume.pdf"
+          download="Eshin_Griffith_Resume.pdf">Download résumé</a
+        >
+      </div>
+    </div>
+    <Image
+      class="profile-photo"
+      src={headshotPic}
+      width={560}
+      alt="Eshin Griffith"
+    />
+  </header>
+
+  <section aria-labelledby="impact-heading">
+    <p class="prompt"><span aria-hidden="true">$</span> impact --recent</p>
+    <h2 id="impact-heading">Production work, measured</h2>
+    <div class="metric-grid">
+      <div class="metric">
+        <strong class="metric-value">~45</strong>
+        <span class="metric-label">Alina-enabled offices</span>
+      </div>
+      <div class="metric">
+        <strong class="metric-value">~60</strong>
+        <span class="metric-label">voice agents</span>
+      </div>
+      <div class="metric">
+        <strong class="metric-value">1,000–1,500</strong>
+        <span class="metric-label">monthly calls</span>
+      </div>
+      <div class="metric">
+        <strong class="metric-value">549</strong>
+        <span class="metric-label">production Step Function runs · 99% success</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="open-source-heading">
+    <p class="prompt"><span aria-hidden="true">$</span> ls ./open-source</p>
+    <h2 id="open-source-heading">Selected open source</h2>
+    <div class="panel-grid">
+      <article class="panel">
+        <p class="panel-label">TypeScript · Effect</p>
+        <h3>
+          <a href="https://github.com/egriff38/effect-herdr">effect-herdr</a>
+        </h3>
+        <p>
+          A typed Effect SDK for a terminal-native agent multiplexer. I expanded
+          its RPC surface from 14 to 62 operations and fixed seven reproduced
+          protocol and schema defects.
+        </p>
+        <ul class="tag-list" aria-label="effect-herdr highlights">
+          <li>62 operations</li>
+          <li>7 defects fixed</li>
+          <li>typed RPC</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <p class="panel-label">TypeScript · Effect · GraphQL</p>
+        <h3>
+          <a href="https://github.com/egriff38/effect-graphql">effect-graphql</a>
+        </h3>
+        <p>
+          A code-first GraphQL prototype over Effect Schema and RPC, accompanied
+          by authorization and testing guides in an integrated documentation
+          site.
+        </p>
+        <ul class="tag-list" aria-label="effect-graphql highlights">
+          <li>code-first</li>
+          <li>authorization</li>
+          <li>testing guides</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <aside class="panel activity" aria-labelledby="activity-heading">
+    <p class="prompt"><span aria-hidden="true">$</span> ps</p>
+    <h2 id="activity-heading">Current focus</h2>
+    <ul class="terminal-list">
+      <li><span><strong>role</strong> Senior Software Engineer at ChiroHD</span></li>
+      <li><span><strong>building</strong> Alina’s voice scheduling platform</span></li>
+      <li><span><strong>open-source</strong> effect-herdr and effect-graphql</span></li>
+    </ul>
+  </aside>
 </Layout>
+
+<style>
+  .home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 20rem);
+    gap: clamp(2rem, 7vw, 5rem);
+    align-items: center;
+  }
+
+  .hero-copy {
+    min-width: 0;
+  }
+
+  .home-hero h1 {
+    margin-block: 0.25rem;
+    text-align: left;
+  }
+
+  .role {
+    margin: 0 0 1rem;
+    color: var(--foam, #9ccfd8);
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  .profile-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--muted, #6e6a86);
+    border-radius: 0.5rem;
+    filter: saturate(0.9);
+  }
+
+  section,
+  .activity {
+    margin-top: clamp(3rem, 8vw, 5rem);
+  }
+
+  section > h2,
+  .activity h2 {
+    margin-top: 0.25rem;
+  }
+
+  .secondary {
+    background: transparent;
+    color: var(--foam, #9ccfd8);
+  }
+
+  .panel h3 {
+    margin-top: 0.2rem;
+    font-size: 1.35rem;
+  }
+
+  .activity {
+    max-width: 46rem;
+  }
+
+
+  .activity strong {
+    display: inline-block;
+    min-width: 7.5rem;
+    color: var(--rose, #ebbcba);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+
+  @media (max-width: 42rem) {
+    .home-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .profile-photo {
+      grid-row: 1;
+      width: min(15rem, 70vw);
+    }
+
+    .activity strong {
+      display: block;
+      min-width: 0;
+      margin-bottom: 0.15rem;
+    }
+
+  }
+</style>
